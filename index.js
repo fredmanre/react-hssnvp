@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 import { render } from 'react-dom';
 import Hello from './Hello';
 import './style.css';
@@ -28,7 +28,7 @@ class Blog extends Component {
         {
           this.state.articles.map((article) => {
             return (
-              <div className='card' style={{backgroundColor: 'white', color:'black'}}>
+              <div className='card' style={{backgroundColor: 'red', color:'brown'}}>
                 <p>{article.title}</p>
               </div>
             )
@@ -37,6 +37,17 @@ class Blog extends Component {
       </div>
     )
   }
+}
+
+function Contador(props) {
+  const [contador, setContador] = useState(0)
+  return (
+    <div>
+      <p>conteo: {contador}</p>
+      <button onClick={ () => setContador(contador + 1 )}>aumentar</button>
+      <button onClick={ () => setContador(contador - 1 )}>disminuir</button>
+    </div>
+  )
 }
 
 
@@ -84,37 +95,7 @@ class Formulario extends Component {
   }
 }
 
-class Contador extends Component {
-  constructor(props) {
-    super(props)
 
-    this.state = {
-      contador: 0,
-    }
-  }
-
-  aumentar = () => {
-    this.setState({
-      contador: this.state.contador + 1
-    })
-  }
-
-  disminuir = () => {
-    this.setState({
-      contador: this.state.contador -1
-    })
-  }
-
-  render () {
-    return (
-      <div>
-        <p>{this.state.contador}</p>
-        <button onClick={this.aumentar}>Aumentar</button>
-        <button onClick={this.disminuir}>Disminuir</button>
-      </div>
-    )
-  }
-}
 
 class App extends Component {
   constructor() {
@@ -137,3 +118,39 @@ class App extends Component {
 }
 
 render(<App />, document.getElementById('root'));
+
+
+/*
+class Contador extends Component {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      contador: 0,
+    }
+  }
+
+  aumentar = () => {
+    this.setState({
+      contador: this.state.contador + 1
+    })
+  }
+
+  disminuir = () => {
+    this.setState({
+      contador: this.state.contador -1
+    })
+  }
+  
+
+  render () {
+    return (
+      <div>
+        <p>{this.state.contador}</p>
+        <button onClick={this.aumentar}>Aumentar</button>
+        <button onClick={this.disminuir}>Disminuir</button>
+      </div>
+    )
+  }
+}
+*/
