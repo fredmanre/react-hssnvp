@@ -4,22 +4,36 @@ import Hello from './Hello';
 import './style.css';
 
 
-function MiComponente() {
-  return <p>Hola mundo</p>
-}
+class Contador extends Component {
+  constructor(props) {
+    super(props)
 
-class MiComponenteDeClase extends Component {
-  render() {
-    return <p>Hola soy de la clase</p>
+    this.state = {
+      contador: 0,
+    }
   }
-}
 
-let nombre = 'freddy'
-function A(props) {
-  return <p>nombre: {props.nombre} last: {props.last} hijos: {props.children}</p>
-}
-function B(props) {
-    return <p>Nombre es: {props.nombre}</p>
+  aumentar = () => {
+    this.setState({
+      contador: this.state.contador + 1
+    })
+  }
+
+  disminuir = () => {
+    this.setState({
+      contador: this.state.contador -1
+    })
+  }
+
+  render () {
+    return (
+      <div>
+        <p>{this.state.contador}</p>
+        <button onClick={this.aumentar}>Aumentar</button>
+        <button onClick={this.disminuir}>Disminuir</button>
+      </div>
+    )
+  }
 }
 
 class App extends Component {
@@ -34,12 +48,7 @@ class App extends Component {
     let last = "blanco"
     return (
       <div>
-        < MiComponente />
-        < MiComponenteDeClase />
-        < A nombre={this.state.name} last={last}>
-          <p>hijo del componente {2}</p>
-        </A>
-        <B nombre='Freddy' />
+        <Contador />
       </div>
     );
   }
