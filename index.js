@@ -27,7 +27,11 @@ class Blog extends Component {
       <div>
         {
           this.state.articles.map((article) => {
-            return <p>{article.title}</p>
+            return (
+              <div className='card' style={{backgroundColor: 'white', color:'black'}}>
+                <p>{article.title}</p>
+              </div>
+            )
           })
         }
       </div>
