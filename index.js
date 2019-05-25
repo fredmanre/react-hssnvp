@@ -16,7 +16,7 @@ class MiComponenteDeClase extends Component {
 
 let nombre = 'freddy'
 function A(props) {
-  return <p>nombre: {props.nombre} last: {props.last}</p>
+  return <p>nombre: {props.nombre} last: {props.last} hijos: {props.children}</p>
 }
 function B(props) {
     return <p>Nombre es: {props.nombre}</p>
@@ -36,7 +36,9 @@ class App extends Component {
       <div>
         < MiComponente />
         < MiComponenteDeClase />
-        < A nombre={this.state.name} last={last}/>
+        < A nombre={this.state.name} last={last}>
+          <p>hijo del componente {2}</p>
+        </A>
         <B nombre='Freddy' />
       </div>
     );
