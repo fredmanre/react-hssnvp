@@ -4,6 +4,38 @@ import Hello from './Hello';
 import './style.css';
 
 
+class Blog extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      articles: []
+    }
+  }
+
+  componentDidMount(){
+    let promesa = fetch('https://jsonplaceholder.typicode.com/posts')
+
+    promesa.then(response => response.json()).then(data => {
+      this.setState({
+        articles: data,
+      })
+    })
+  }
+
+  render() {
+    return (
+      <div>
+        {
+          this.state.articles.map((article) => {
+            return <p>{article.title}</p>
+          })
+        }
+      </div>
+    )
+  }
+}
+
+
 class Formulario extends Component {
   constructor(props) {
     super(props)
@@ -75,7 +107,6 @@ class Contador extends Component {
         <p>{this.state.contador}</p>
         <button onClick={this.aumentar}>Aumentar</button>
         <button onClick={this.disminuir}>Disminuir</button>
-        <Formulario />
       </div>
     )
   }
@@ -94,6 +125,8 @@ class App extends Component {
     return (
       <div>
         <Contador />
+        <Formulario />
+        <Blog />
       </div>
     );
   }
