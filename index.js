@@ -36,7 +36,7 @@ class App extends Component {
       <div>
         < MiComponente />
         < MiComponenteDeClase />
-        < A nombre='harrison' last={last}/>
+        < A nombre={this.state.name} last={last}/>
         <B nombre='Freddy' />
       </div>
     );
