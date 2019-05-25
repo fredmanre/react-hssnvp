@@ -34,6 +34,7 @@ class App extends Component {
     let last = "blanco"
     return (
       <div>
+        < MiComponente />
         < MiComponenteDeClase />
         < A nombre='harrison' last={last}/>
         <B nombre='Freddy' />
